@@ -5,12 +5,8 @@ from .utils import get_user_data_from_username, get_most_recent_tweets
 from .models import TwitterUser, Tweet
 import json
 
-# Create your views here.
-
 
 def hello(requeset):
-    # now = datetime.datetime.now()
-    # html = "<html><body>It is now %s.</body></html>" % now
     ans = {"name": "some"}
     return JsonResponse(ans)
 

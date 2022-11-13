@@ -2,12 +2,12 @@ import tweepy
 import yaml
 import json
 
-with open("app/twitter-oauth.yaml", "r") as yamlfile:
-    temp_twitter_auth_data = yaml.load(yamlfile, Loader=yaml.FullLoader)
+with open("static/oauth.yaml", "r") as yamlfile:
+    temp_auth_data = yaml.load(yamlfile, Loader=yaml.FullLoader)
 
-twitter_auth_creds = temp_twitter_auth_data["TWITTER"]
+twitter_auth_creds = temp_auth_data["TWITTER"]
 
-client = tweepy.Client(
+twitter_client = tweepy.Client(
     access_token=twitter_auth_creds["ACCESS_TOKEN"],
     access_token_secret=twitter_auth_creds["ACCESS_TOKEN_SECRET"],
     consumer_key=twitter_auth_creds["COSUMER_KEY"],
@@ -18,7 +18,7 @@ client = tweepy.Client(
 
 
 def get_user_data_from_username(screen_name: str):
-    user_data = client.get_user(
+    user_data = twitter_client.get_user(
         username=screen_name,
         user_fields=[
             "created_at",
@@ -39,7 +39,7 @@ def get_most_recent_tweets(name, max_tweets=5):
     user_data = get_user_data_from_username(name)
     print("found user")
     user_id = user_data.data.id
-    tweets = client.get_users_tweets(
+    tweets = twitter_client.get_users_tweets(
         user_id,
         tweet_fields=[
             "attachments",
