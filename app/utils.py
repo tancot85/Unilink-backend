@@ -32,3 +32,23 @@ def get_user_data_from_username(screen_name: str):
         ],
     )
     return user_data
+
+
+def get_most_recent_tweets(name, max_tweets=5):
+    print(f"name: {name}")
+    user_data = get_user_data_from_username(name)
+    print("found user")
+    user_id = user_data.data.id
+    tweets = client.get_users_tweets(
+        user_id,
+        tweet_fields=[
+            "attachments",
+            "created_at",
+            "context_annotations",
+            "in_reply_to_user_id",
+            "possibly_sensitive",
+            "public_metrics",
+        ],
+        max_results=max_tweets,
+    )
+    return tweets

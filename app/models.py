@@ -18,6 +18,9 @@ class Tweet:
     like_count: int
     quote_count: int
 
+    def to_dict(self) -> dict:
+        return {key: value for key, value in self.__dict__.items()}
+
 
 class TwitterUser:
     def __init__(
@@ -35,7 +38,6 @@ class TwitterUser:
         tweet_count,
         is_verified,
         location,
-
     ) -> None:
 
         self.id_ = id_
@@ -52,7 +54,6 @@ class TwitterUser:
         self.following_count = following_count
         self.tweet_count = tweet_count
         self.is_verified = is_verified
-
 
     def __str__(self) -> str:
         return f"""
@@ -71,5 +72,6 @@ class TwitterUser:
         tweet_count: {self.tweet_count},
         is_verified: {self.is_verified},
     """
+
     def to_dict(self) -> dict:
         return {key: value for key, value in self.__dict__.items()}
