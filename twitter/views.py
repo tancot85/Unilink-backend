@@ -1,9 +1,11 @@
 import datetime
+import json
+
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .utils import get_user_data_from_username, get_most_recent_tweets
-from .models import TwitterUser, Tweet
-import json
+
+from .models import Tweet, TwitterUser
+from .utils import get_most_recent_tweets, get_user_data_from_username
 
 
 def hello(requeset):
