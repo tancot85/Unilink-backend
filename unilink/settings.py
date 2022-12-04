@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "api",
     "twitter",
     "reddit",
+    "django_extensions"
 ]
 
 MIDDLEWARE = [

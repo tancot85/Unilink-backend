@@ -97,3 +97,12 @@ def get_recent_tweets(request):
 
         return JsonResponse(res, safe=False)
     return HttpResponse("no name specified for retrieving tweets")
+
+
+def login_receive(request):
+
+    print(request)
+
+    print(request.build_absolute_uri())
+
+    return JsonResponse({"message": "hello there"})
